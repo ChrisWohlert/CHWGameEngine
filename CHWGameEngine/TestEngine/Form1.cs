@@ -25,14 +25,14 @@ namespace TestEngine
             InitializeComponent();
 
             p = new Player(res.Player, gw);
-            p2 = new Enemy(res.Player, gw) { Location = new DecimalPoint(1600, 600) };
+            p2 = new Enemy(res.Player, gw) { Location = new DecimalPoint(3050, 3150) };
             gw.Player = p;
             p.Location.X = 3000;
             p.Location.Y = 3000;
 
             p2.TargetSpeed = 6;
             p2.Angle = 180;
-            p2.MotionBehavior = new EvasiveMotionBehavior(p2, gw, p.Location);
+            p2.MotionBehavior = new CircleMotionBehavior(p2, gw, p.Location);
             Tile grass = new Tile(res.Grass, 0);
             grass.IsSolid = false;
             Tile rock = new Tile(res.Rock, 1);

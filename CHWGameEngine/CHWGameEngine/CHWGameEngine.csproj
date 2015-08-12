@@ -49,6 +49,7 @@
     <Compile Include="Game.cs" />
     <Compile Include="GameObject\DecimalPoint.cs" />
     <Compile Include="GameObject\IGameObjectHandler.cs" />
+    <Compile Include="Motion\CircleMotionBehavior.cs" />
     <Compile Include="Motion\EvasiveMotionBehavior.cs" />
     <Compile Include="Motion\IMotionBehavior.cs" />
     <Compile Include="Motion\MotionBehavior.cs" />
