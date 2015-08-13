@@ -63,16 +63,6 @@ namespace TestEngine.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _23222_1_other_wallpapers_dual_screen_dual_monitor {
-            get {
-                object obj = ResourceManager.GetObject("_23222_1_other_wallpapers_dual_screen_dual_monitor", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Boulder {
             get {
                 object obj = ResourceManager.GetObject("Boulder", resourceCulture);

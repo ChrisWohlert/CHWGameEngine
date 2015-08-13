@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHWGameEngine", "CHWGameEng
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestEngine", "TestEngine\TestEngine.csproj", "{D9564084-4D37-4BF5-8F39-8EBE4BF793AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFTestEngine", "WPFTestEngine\WPFTestEngine.csproj", "{C6457473-F6D1-4863-9968-3F27359079B5}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{D9564084-4D37-4BF5-8F39-8EBE4BF793AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9564084-4D37-4BF5-8F39-8EBE4BF793AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9564084-4D37-4BF5-8F39-8EBE4BF793AB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C6457473-F6D1-4863-9968-3F27359079B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C6457473-F6D1-4863-9968-3F27359079B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C6457473-F6D1-4863-9968-3F27359079B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C6457473-F6D1-4863-9968-3F27359079B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

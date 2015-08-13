@@ -16,7 +16,7 @@ namespace TestEngine
         private Player p;
         private Enemy p2;
         private Game game;
-        private GameWorld gw = new GameWorld(@"C:\Users\Chris\Google Drev\level1.txt");
+        private GameWorld gw = new GameWorld(@"C:\Users\54430\Documents\SlaugtherDungeon\SlaugtherDungeon\Repository\Resources\level1.txt");
         private Thread t;
         private Point dest;
 

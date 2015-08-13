@@ -28,7 +28,7 @@ namespace CHWGameEngine.Motion
             double radius = Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
 
             double curTheta = Math.Atan2(deltaX, deltaY);
-            double deltaTheta = GameObject.ActualSpeed + 5 / radius;
+            double deltaTheta = GameObject.ActualSpeed + 10 / radius;
             double newTheta = curTheta + deltaTheta;
 
             double newDeltaX = radius*Math.Cos(newTheta);
