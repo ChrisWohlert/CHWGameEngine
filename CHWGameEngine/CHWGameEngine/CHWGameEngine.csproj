@@ -53,6 +53,7 @@
     <Compile Include="Motion\EvasiveMotionBehavior.cs" />
     <Compile Include="Motion\IMotionBehavior.cs" />
     <Compile Include="Motion\MotionBehavior.cs" />
+    <Compile Include="Motion\MotionEventArgs.cs" />
     <Compile Include="Motion\NormalCollisionMotionBehavior.cs" />
     <Compile Include="Motion\NormalMotionBehavior.cs" />
     <Compile Include="CHWGraphics\GfxEngine.cs" />

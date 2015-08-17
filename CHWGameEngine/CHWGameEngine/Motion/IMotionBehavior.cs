@@ -53,7 +53,6 @@ namespace CHWGameEngine.Motion
         /// Called when the object collides with a wall, if it cannot move through walls
         /// </summary>
         event EventHandler WallCollision;
-
-        event SendDistance DistianceTravelledChanged;
+        event EventHandler<MotionEventArgs> Moved; 
     }
 }

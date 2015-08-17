@@ -57,13 +57,13 @@ namespace CHWGameEngine.CHWGraphics
             Bitmap result = new Bitmap(width, height);
             result.SetResolution(image.HorizontalResolution, image.VerticalResolution);
 
-            using (Graphics graphics = Graphics.FromImage(result))
-            {
-                graphics.CompositingQuality = CompositingQuality.HighQuality;
-                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                graphics.SmoothingMode = SmoothingMode.HighQuality;
-                graphics.DrawImage(image, 0, 0, result.Width, result.Height);
-            }
+            Graphics graphics = Graphics.FromImage(result);
+            
+            graphics.CompositingQuality = CompositingQuality.HighQuality;
+            graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            graphics.SmoothingMode = SmoothingMode.HighQuality;
+            graphics.DrawImage(image, 0, 0, result.Width, result.Height);
+            
 
             return result;
         }
