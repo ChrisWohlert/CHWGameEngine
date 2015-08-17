@@ -11,21 +11,16 @@ namespace CHWGameEngine.Motion
      public class CircleMotionBehavior : MotionBehavior
     {
         public DecimalPoint Center { get; set; }
-        public double Range { get; set; }
-        private double angle;
-        private double range;
+        public int Range { get; set; }
 
         public CircleMotionBehavior(IGameObject gameObject, GameWorld gw, DecimalPoint center) : base(gameObject, gw)
         {
             Center = center;
-            range = gw.GetDistance(center, gameObject.Location);
-            Range = 180;
-            angle = GameWorld.CalcAngle(GameObject.Location.ToPoint(), Center.ToPoint());
+            Range = 200;
         }
 
         protected override void CalcMove()
         {
-<<<<<<< HEAD
             GameObject.Angle = (int)GameWorld.CalcAngle(GameObject.Location.ToPoint(), Center.ToPoint()) + 90;
             double deltaX = (GameObject.Location.X - Center.X);
             double deltaY = (GameObject.Location.Y - Center.Y);
@@ -33,17 +28,14 @@ namespace CHWGameEngine.Motion
             double radius = Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
 
             double curTheta = Math.Atan2(deltaX, deltaY);
-            double deltaTheta = GameObject.ActualSpeed + 10 / radius;
+            double deltaTheta = GameObject.ActualSpeed + 5 / radius;
             double newTheta = curTheta + deltaTheta;
-=======
-            if (range < Range) range += 2;
-            GameObject.Location.X = (Center.X + range * Math.Cos(angle));
-            GameObject.Location.Y = (Center.Y + range * Math.Sin(angle));
->>>>>>> 07d32ed520e65543b7bef9f301bd8d72970c9905
 
-            double speed = 2 * Math.PI * 1;
-            angle -= speed / (GameObject.ActualSpeed * 10);
-            GameObject.Angle = (int)GameWorld.CalcAngle(GameObject.Location.ToPoint(), Center.ToPoint()) + 90;
+            double newDeltaX = radius*Math.Cos(newTheta);
+            double newDeltaY = radius*Math.Sin(newTheta);
+
+            GameObject.Location.X = Center.X + newDeltaX;
+            GameObject.Location.Y = Center.Y + newDeltaY;
         }
     }
 }
