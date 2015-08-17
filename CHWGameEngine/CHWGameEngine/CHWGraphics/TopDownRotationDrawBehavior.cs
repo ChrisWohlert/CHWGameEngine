@@ -46,31 +46,30 @@ namespace CHWGameEngine.CHWGraphics
         private Bitmap RotateImageByAngle()
         {
             var matrix = new Matrix();
-            matrix.Translate((float)GameObject.Image.Width / -2, (float)GameObject.Image.Height / -2, MatrixOrder.Append);
+            matrix.Translate((float) GameObject.Image.Width/-2, (float) GameObject.Image.Height/-2, MatrixOrder.Append);
             matrix.RotateAt(GameObject.Angle, new Point(0, 0), MatrixOrder.Append);
-            using (GraphicsPath gp = new GraphicsPath())
-            {
-                gp.AddPolygon(new[] { new Point(0, 0), new Point(GameObject.Image.Width, 0), new Point(0, GameObject.Image.Height) });
-                gp.Transform(matrix);
-                PointF[] pts = gp.PathPoints;
+            GraphicsPath gp = new GraphicsPath();
 
-                Rectangle bBox = BoundingBox(GameObject.Image, matrix);
-                GameObject.MotionBehavior.Area = new Rectangle(
-                    bBox.X + (bBox.Width - GameObject.Image.Size.Width),
-                    bBox.Y + (bBox.Height - GameObject.Image.Size.Height),
-                    GameObject.Image.Size.Width,
-                    GameObject.Image.Size.Height);
-                Bitmap newBmp = new Bitmap(bBox.Width, bBox.Height);
+            gp.AddPolygon(new[]
+                {new Point(0, 0), new Point(GameObject.Image.Width, 0), new Point(0, GameObject.Image.Height)});
+            gp.Transform(matrix);
+            PointF[] pts = gp.PathPoints;
 
-                using (Graphics newG = Graphics.FromImage(newBmp))
-                {
-                    var newMatrix = new Matrix();
-                    newMatrix.Translate((float)newBmp.Width / 2, (float)newBmp.Height / 2, MatrixOrder.Append);
-                    newG.Transform = newMatrix;
-                    newG.DrawImage(GameObject.Image, pts);
-                    return newBmp;
-                }
-            }
+            Rectangle bBox = BoundingBox(GameObject.Image, matrix);
+            GameObject.MotionBehavior.Area = new Rectangle(
+                bBox.X + (bBox.Width - GameObject.Image.Size.Width),
+                bBox.Y + (bBox.Height - GameObject.Image.Size.Height),
+                GameObject.Image.Size.Width,
+                GameObject.Image.Size.Height);
+            Bitmap newBmp = new Bitmap(bBox.Width, bBox.Height);
+
+            Graphics newG = Graphics.FromImage(newBmp);
+
+            var newMatrix = new Matrix();
+            newMatrix.Translate((float) newBmp.Width/2, (float) newBmp.Height/2, MatrixOrder.Append);
+            newG.Transform = newMatrix;
+            newG.DrawImage(GameObject.Image, pts);
+            return newBmp;
         }
 
         private Rectangle BoundingBox(Image img, Matrix matrix)

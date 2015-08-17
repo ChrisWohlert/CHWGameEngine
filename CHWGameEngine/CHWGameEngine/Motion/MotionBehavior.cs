@@ -12,7 +12,7 @@ namespace CHWGameEngine.Motion
         /// <summary>
         /// The gameworld
         /// </summary>
-        protected GameWorld gw;
+        protected GameWorld Gw;
 
         private double distanceTravelled;
 
@@ -29,12 +29,11 @@ namespace CHWGameEngine.Motion
             private set
             {
                 distanceTravelled = Math.Abs(value);
-                if (DistianceTravelledChanged != null) DistianceTravelledChanged(distanceTravelled);
             }
         }
 
         public event EventHandler WallCollision;
-        public event SendDistance DistianceTravelledChanged;
+        public event EventHandler<MotionEventArgs> Moved;
 
         /// <summary>
         /// MotionBehavior contructor
@@ -44,7 +43,7 @@ namespace CHWGameEngine.Motion
         protected MotionBehavior(IGameObject gameObject, GameWorld gw)
         {
             this.GameObject = gameObject;
-            this.gw = gw;
+            this.Gw = gw;
             Speed = new DecimalPoint(0, 0);
             NewSpeed = new DecimalPoint(0, 0);
             CanMoveThroughWall = false;
@@ -121,7 +120,10 @@ namespace CHWGameEngine.Motion
             {
                 GameObject.Location.X += Speed.X;
                 GameObject.Location.Y += Speed.Y;
-                DistanceTravelled += Math.Abs(Speed.X) + Math.Abs(Speed.Y);
+                DistanceTravelled +=
+                    Math.Sqrt(Math.Pow(GameObject.Location.X - (GameObject.Location.X + Speed.X), 2) +
+                              Math.Pow(GameObject.Location.Y - (GameObject.Location.Y + Speed.X), 2));
+                if (Moved != null) Moved(this, new MotionEventArgs(Speed, DistanceTravelled));
             }
             else
             {
@@ -146,7 +148,7 @@ namespace CHWGameEngine.Motion
             list.Add(GameObject);
 
             if (
-                gw.GetClosestGameObjectFromMap(new Point((int) (GameObject.Location.X + Speed.X), (int) (GameObject.Location.Y +  Speed.Y)),
+                Gw.GetClosestGameObjectFromMap(new Point((int) (GameObject.Location.X + Speed.X), (int) (GameObject.Location.Y +  Speed.Y)),
                     Area.Width + 10, list) == null)
                 return false;
 
@@ -175,10 +177,10 @@ namespace CHWGameEngine.Motion
             int xEnd = (int)(GameObject.Location.X + Area.X + Speed.X + Area.Width) / Tile.Width;
             int yEnd = (int)(GameObject.Location.Y + Area.Y + Speed.Y + Area.Height) / Tile.Height;
 
-            if (!gw.GetTile(x, y).IsSolid
-                && !gw.GetTile(xEnd, y).IsSolid
-                && !gw.GetTile(x, yEnd).IsSolid
-                && !gw.GetTile(xEnd, yEnd).IsSolid)
+            if (!Gw.GetTile(x, y).IsSolid
+                && !Gw.GetTile(xEnd, y).IsSolid
+                && !Gw.GetTile(x, yEnd).IsSolid
+                && !Gw.GetTile(xEnd, yEnd).IsSolid)
                 return false;
 
             if (WallCollision != null)

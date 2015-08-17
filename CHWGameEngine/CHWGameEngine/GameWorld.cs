@@ -209,9 +209,9 @@ namespace CHWGameEngine
             return null;
         }
 
-        public DecimalPoint GetDistance(DecimalPoint location, DecimalPoint destination)
+        public double GetDistance(DecimalPoint location, DecimalPoint destination)
         {
-            return new DecimalPoint(Math.Abs(location.X - destination.X), Math.Abs(location.Y - destination.Y));
+            return  Math.Sqrt(Math.Pow(location.X - destination.X, 2) + Math.Pow(location.Y - destination.Y, 2));
         }
 
         public IEnumerable<IGameObject> GetClosestGameObjects(DecimalPoint location, int range)
