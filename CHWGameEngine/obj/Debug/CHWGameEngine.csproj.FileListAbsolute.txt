@@ -3,3 +3,5 @@ C:\Users\54430\Documents\CHWGameEngine\CHWGameEngine\CHWGameEngine\bin\Debug\CHW
 C:\Users\54430\Documents\CHWGameEngine\CHWGameEngine\CHWGameEngine\obj\Debug\CHWGameEngine.csprojResolveAssemblyReference.cache
 C:\Users\54430\Documents\CHWGameEngine\CHWGameEngine\CHWGameEngine\obj\Debug\CHWGameEngine.dll
 C:\Users\54430\Documents\CHWGameEngine\CHWGameEngine\CHWGameEngine\obj\Debug\CHWGameEngine.pdb
+C:\Users\54430\Documents\CHWGameEngine\CHWGameEngine\obj\Debug\CHWGameEngine.csprojResolveAssemblyReference.cache
+C:\Users\54430\Documents\CHWGameEngine\CHWGameEngine\obj\Debug\CHWGameEngine.dll
