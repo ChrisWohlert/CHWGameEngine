@@ -5,10 +5,8 @@ using System.Drawing.Imaging;
 using System.Linq;
 using CHWGameEngine.Tiles;
 
-namespace CHWGameEngine.CHWGraphics
-{
-    class GfxEngine
-    {
+namespace CHWGameEngine.CHWGraphics {
+    class GfxEngine {
         #region Fields
 
         /// <summary>
@@ -48,8 +46,7 @@ namespace CHWGameEngine.CHWGraphics
         /// <param name="g">Graphics object to draw onto</param>
         /// <param name="gw">GameWorld</param>
         /// <param name="camera">Camera</param>
-        public GfxEngine(Graphics g, GameWorld gw, Camera camera)
-        {
+        public GfxEngine(Graphics g, GameWorld gw, Camera camera) {
             this.g = g;
             this.gw = gw;
             this.camera = camera;
@@ -60,16 +57,14 @@ namespace CHWGameEngine.CHWGraphics
         /// <summary>
         /// Paints the background
         /// </summary>
-        private void PaintBackground()
-        {
+        private void PaintBackground() {
             int xStart = (int)Math.Max(0, camera.XOffset / Tile.Width);
             int xEnd = (int)Math.Min(gw.Tiles.GetLength(0), (camera.XOffset + Game.Size.Width) / Tile.Width + 1);
             int yStart = (int)Math.Max(0, camera.YOffset / Tile.Height); ;
             int yEnd = (int)Math.Min(gw.Tiles.GetLength(1), (camera.YOffset + Game.Size.Height) / Tile.Height + 1);
 
             for (int x = xStart; x < xEnd; x++)
-                for (int y = yStart; y < yEnd; y++)
-                {
+                for (int y = yStart; y < yEnd; y++) {
                     Tile t = gw.GetTile(x, y);
                     int tileOffsetX = (int)(x * Tile.Width - camera.XOffset);
                     int tileOffsetY = (int)(y * Tile.Height - camera.YOffset);
@@ -79,30 +74,23 @@ namespace CHWGameEngine.CHWGraphics
         /// <summary>
         /// Paints everything in camera's view
         /// </summary>
-        public void Paint()
-        {
+        public void Paint() {
             frameG.CompositingMode = CompositingMode.SourceCopy;
             frameG.InterpolationMode = InterpolationMode.NearestNeighbor;
             PaintBackground();
             frameG.CompositingMode = CompositingMode.SourceOver;
             gw.VisibleGameObjects.Clear();
 
-            try
-            {
+            try {
                 foreach (var go in gw.GameObjects.OrderBy(x => x.Paralax))
-                    if (camera.IsOnScreen(go))
-                    {
+                    if (camera.IsOnScreen(go)) {
                         go.DrawBehavior.Draw(frameG,
                             new Point((int)camera.XOffset + go.Image.Size.Width / 2, (int)camera.YOffset + go.Image.Size.Height / 2));
                         gw.VisibleGameObjects.Add(go);
-                    }
-                    else
-                    {
+                    } else {
                         if (OutOfVision != null) OutOfVision(go);
                     }
-            }
-            catch (Exception)
-            {
+            } catch (Exception) {
                 // ignored
             }
 
