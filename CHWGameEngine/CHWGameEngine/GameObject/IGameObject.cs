@@ -19,7 +19,7 @@ namespace CHWGameEngine.GameObject
         /// <summary>
         /// The angle the object is facing
         /// </summary>
-        int Angle { get; set; }
+        double Angle { get; set; }
         /// <summary>
         /// The actual speed of the object
         /// </summary>
